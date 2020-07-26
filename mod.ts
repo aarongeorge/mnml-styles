@@ -10,9 +10,6 @@ else {
 	let mnmlstylecss = ''
 	const {default: config} = await import(`file://${Deno.cwd()}/${CONFIG_PATH}`)
 	const {reader, writer} = config.parser || defaultParser
-	const temp = await reader(config.theme)
-	console.log(temp)
-	mnmlstylecss = await writer(temp)
-	console.log(mnmlstylecss)
+	mnmlstylecss = await reader(config.theme).then(writer)
 	await Deno.writeTextFile(`${Deno.cwd()}/${config.outputDir}${OUTPUT_NAME}`, mnmlstylecss)
 }
