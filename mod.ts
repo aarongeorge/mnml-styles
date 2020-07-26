@@ -9,7 +9,10 @@ if (!await exists(CONFIG_PATH)) console.error(new Error(`Could not find \`${CONF
 else {
 	let mnmlstylecss = ''
 	const {default: config} = await import(`file://${Deno.cwd()}/${CONFIG_PATH}`)
-	config.parser = config.parser || defaultParser
-	mnmlstylecss = await config.parser.reader(config.theme).then(config.parser.writer)
+	const {reader, writer} = config.parser || defaultParser
+	const temp = await reader(config.theme)
+	console.log(temp)
+	mnmlstylecss = await writer(temp)
+	console.log(mnmlstylecss)
 	await Deno.writeTextFile(`${Deno.cwd()}/${config.outputDir}${OUTPUT_NAME}`, mnmlstylecss)
 }
