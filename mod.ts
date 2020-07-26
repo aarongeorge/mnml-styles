@@ -10,7 +10,7 @@ if (!await exists(CONFIG_PATH)) console.error(new Error(`Could not find \`${CONF
 else {
 	console.log(4)
 	console.log(Deno.cwd())
-	const {default: config} = await import(`${Deno.cwd()}/${CONFIG_PATH}`)
+	const {default: config} = await import(`file://${Deno.cwd()}/${CONFIG_PATH}`)
 	console.log(5)
 	await Deno.writeTextFile(`${Deno.cwd()}/${config.outputDir}${OUTPUT_NAME}`, config.theme)
 	console.log(6)
