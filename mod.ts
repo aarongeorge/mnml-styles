@@ -7,10 +7,11 @@ const OUTPUT_NAME = 'mnml-styles.css'
 
 if (!await exists(CONFIG_PATH)) console.error(new Error(`Could not find \`${CONFIG_NAME}\``))
 else {
-	let mnmlstylcss = ''
+	let mnmlstylecss = ''
 	const {default: config} = await import(`file://${Deno.cwd()}/${CONFIG_PATH}`)
 	config.parser = config.parser || defaultParser
 	console.log(`Using parser: ${config.parser.name}`)
-	mnmlstylcss = await defaultParser.reader(config.theme).then(defaultParser.writer)
-	await Deno.writeTextFile(`${Deno.cwd()}/${config.outputDir}${OUTPUT_NAME}`, mnmlstylcss)
+	mnmlstylecss = await defaultParser.reader(config.theme).then(defaultParser.writer)
+	console.log(mnmlstylecss)
+	await Deno.writeTextFile(`${Deno.cwd()}/${config.outputDir}${OUTPUT_NAME}`, mnmlstylecss)
 }
