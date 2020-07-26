@@ -13,6 +13,7 @@ interface PropertySchema {
 }
 
 export default {
+	name: 'mnml-styles default',
 	reader: (theme: Theme) => {
 		let properties: Array<PropertySchema> = []
 

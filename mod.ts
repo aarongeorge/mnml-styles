@@ -10,6 +10,7 @@ else {
 	let mnmlstylcss = ''
 	const {default: config} = await import(`file://${Deno.cwd()}/${CONFIG_PATH}`)
 	config.parser = config.parser || defaultParser
+	console.log(`Using parser: ${config.parser.name}`)
 	mnmlstylcss = await defaultParser.reader(config.theme).then(defaultParser.writer)
 	await Deno.writeTextFile(`${Deno.cwd()}/${config.outputDir}${OUTPUT_NAME}`, mnmlstylcss)
 }
