@@ -1,0 +1,6 @@
+export default {
+	'pointer-events': {
+		'auto': '.pointer-events-auto',
+		'none': '.pointer-events-none'
+	}
+}
