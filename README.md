@@ -8,7 +8,7 @@ Generation of mnml-styles.css files through the use of Deno
 - Make `mnml-styl` a binary executable
 
 ```bash
-deno install --unstable --allow-read --allow-write ./mod.ts
+deno install --unstable --allow-read --allow-write --allow-net -n mnml-styles ./mod.ts
 ```
 
 - Add Deno's `bin` path to your shell's `$PATH` so we can reference `mnml-styles` with ease
